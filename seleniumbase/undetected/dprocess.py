@@ -61,6 +61,7 @@ def _cleanup():
         with suppress(Exception):
             logging.getLogger(__name__).debug("cleaning up pid %d " % pid)
             os.kill(pid, signal.SIGTERM)
+            os.waitpid(pid, 0)
 
 
 atexit.register(_cleanup)
