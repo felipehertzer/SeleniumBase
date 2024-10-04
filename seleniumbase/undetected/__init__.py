@@ -503,7 +503,8 @@ class Chrome(selenium.webdriver.chrome.webdriver.WebDriver):
                         "Successfully removed %s" % self.user_data_dir
                     )
                     break
-                time.sleep(0.1)
+                finally:    # <<<-- added a finally and break
+                    break # time.sleep(0.1)
         # Dereference Patcher so that it can start cleaning up as well.
         # This must come last, otherwise it will throw "in use" errors.
         self.patcher = None
